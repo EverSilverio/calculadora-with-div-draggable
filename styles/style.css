@@ -19,7 +19,7 @@ header {
     justify-content: center;
     width: 100%;
     height: 80px;
-    font-size: 2em;
+    font-size: 1.6em;
     text-align: center;
     background-color: rgba(204, 204, 204, 0.3);
     color: #555;
@@ -50,6 +50,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: move;
 }
 
 #numeros {

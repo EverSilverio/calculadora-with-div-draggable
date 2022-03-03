@@ -1,5 +1,6 @@
 const btns = document.querySelectorAll('.btn');
 const visor = document.querySelector('#numeros');
+const calculadora = document.querySelector(".calculadora");
 
 var clickIgual = false;
 
@@ -68,8 +69,6 @@ const fnOper = function (oper) {
     }
 }
 
-const calculadora = document.querySelector(".calculadora");
-
 function onDrag({ movementX, movementY }) {
     let getStyle = window.getComputedStyle(calculadora);
     let leftVal = parseInt(getStyle.left);
@@ -79,12 +78,12 @@ function onDrag({ movementX, movementY }) {
     calculadora.style.top = `${topVal + movementY}px`;
 };
 
-calculadora.addEventListener("mousedown", () => {
-    calculadora.classList.add("active");
-    calculadora.addEventListener("mousemove", onDrag);
+visor.addEventListener("mousedown", () => {
+    visor.classList.add("active");
+    visor.addEventListener("mousemove", onDrag);
 });
 
 document.addEventListener("mouseup", () => {
-    calculadora.classList.remove("active");
-    calculadora.removeEventListener("mousemove", onDrag);
+    visor.classList.remove("active");
+    visor.removeEventListener("mousemove", onDrag);
 });
