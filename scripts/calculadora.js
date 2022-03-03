@@ -5,15 +5,14 @@ var clickIgual = false;
 
 const acao = function () {
     let cl = this.classList;
-    let tx = this.getInnerHTML();
     let value = this.getAttribute('val');
 
     if (cl.contains('clear')) {
         fnAc();
     } else if (cl.contains('num')) {
-        fnNum(value, tx);
+        fnNum(value);
     } else if (cl.contains('oper')) {
-        fnOper(value, tx);
+        fnOper(value);
     } else if (cl.contains('del')) {
         fnDel();
     }
