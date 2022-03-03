@@ -73,17 +73,48 @@ function onDrag({ movementX, movementY }) {
     let getStyle = window.getComputedStyle(calculadora);
     let leftVal = parseInt(getStyle.left);
     let topVal = parseInt(getStyle.top);
-    console.log(getStyle.left);
     calculadora.style.left = `${leftVal + movementX}px`;
     calculadora.style.top = `${topVal + movementY}px`;
 };
 
-visor.addEventListener("mousedown", () => {
+const methodMouseDown = function () {
     visor.classList.add("active");
     visor.addEventListener("mousemove", onDrag);
-});
+}
 
-document.addEventListener("mouseup", () => {
+const methodMouseUp = function () {
     visor.classList.remove("active");
-    visor.removeEventListener("mousemove", onDrag);
-});
+    visor.removeEventListener("mousemove", onDrag);    
+}
+
+visor.addEventListener("mousedown", methodMouseDown);
+document.addEventListener("mouseup", methodMouseUp);
+
+function onDragTouch( { targetTouches } ) {
+    let getStyle = window.getComputedStyle(calculadora);
+    let leftVal = parseInt(getStyle.left);
+    let topVal = parseInt(getStyle.top);
+
+    // grab the location of touch
+    var touchLocation = targetTouches[0];
+
+    // assign box new coordinates based on the touch.
+    calculadora.style.left = touchLocation.pageX + 'px';
+    calculadora.style.top = touchLocation.pageY + 'px';    
+};
+
+const methodTouchDown = function () {
+    visor.classList.add("active");
+    visor.addEventListener("touchmove", onDragTouch);
+}
+
+const methodTouchUp = function () {
+    visor.classList.remove("active");
+    visor.removeEventListener("touchmove", onDragTouch);    
+}
+
+visor.addEventListener("touchstart", methodTouchDown);
+document.addEventListener("touchend ", methodTouchUp);
+
+
+
