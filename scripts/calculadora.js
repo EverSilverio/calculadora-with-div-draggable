@@ -69,6 +69,7 @@ const fnOper = function (oper) {
     }
 }
 
+// tratativa draggable - mouse
 function onDrag({ movementX, movementY }) {
     let getStyle = window.getComputedStyle(calculadora);
     let leftVal = parseInt(getStyle.left);
@@ -90,6 +91,8 @@ const methodMouseUp = function () {
 visor.addEventListener("mousedown", methodMouseDown);
 document.addEventListener("mouseup", methodMouseUp);
 
+
+// tratativa draggable - touch mobile
 function onDragTouch( { targetTouches } ) {
     let getStyle = window.getComputedStyle(calculadora);
     let leftVal = parseInt(getStyle.left);
